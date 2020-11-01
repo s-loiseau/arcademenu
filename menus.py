@@ -1,16 +1,15 @@
 mainmenudict = {
-    "SYSTEM": "SUBMENU",
-    "AUDIO": "POLICE",
-    "VIDEO": "POLICE",
-    "SHELL": "POLICE",
-    "INTERNET": "POLICE",
-    "WIFI": "POLICE",
+    "HDMI": "HDMIMENU",
+    "AUDIO": "AUDIO",
+    "POWEROFF": "POWERMENU",
 }
 
-submenudict = {
-    "BANDWIDTH": "POLICE",
-    "WIRELESS": "POLICE",
-    "RADIO": "POLICE",
-    "NOTES": "POLICE",
-    "REPORTS": "POLICE",
+powermenudict = {
+    "GETBATTERY": "BATTERY",
+    "OFF": "QUIT",
+}
+
+hdmimenudict = {
+    "HDMI": "HDMION",
+    "HDMIONLY": "HDMIONLY",
 }

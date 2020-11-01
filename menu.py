@@ -3,27 +3,139 @@ import sys
 import pygame
 from button import button
 import menus as m
-from themes import theme1
+from themes import theme1, theme2
 import sounds as s
+
+
+def video():
+    os.system("mpv --really-quiet /home/krao/Videos/joueurdugrenierrage.mp4")
+
+
+def ok():
+    True
+
+
+def terminal():
+    os.system("urxvt")
+
+
+def hdmionly():
+    os.system("~/.screenlayout/onlyhdmi19.sh")
+
+
+def hdmi():
+    os.system("~/.screenlayout/1920hdmi2.sh")
+
+
+def transmission():
+    popup("git status", button.width, button.mheight)
+
+
+def ls():
+    popup("ls -Ggh", button.width, button.mheight)
+
+
+def netstat():
+    popup('netstat -ant', button.width, button.mheight)
+
+
+def mail():
+    os.system("urxvt -e bash -c 'mutt'")
+
+
+def popup(command, pw, ph):
+    # Render cmd result, with multilines
+    font = pygame.font.Font(os.path.join(fontdir,"3270-Regular.ttf"), 20)
+    txtcolor = (0, 0, 0)
+    fillcolor = (205, 205, 0)
+
+    data = subprocess.check_output(command, shell=True)
+    data = data.splitlines()
+
+    textblocks = []
+    maxlen = 0
+
+    # Generate textblock and evaluate width.
+    for l in data:
+        textblock = font.render(l, True, txtcolor)
+        lab_len = textblock.get_width()
+        if lab_len > maxlen:
+            maxlen = lab_len
+        textblocks.append(textblock)
+
+    # evaluate height.
+    linevert = textblocks[0].get_height()
+    lines = len(data)
+    textvert = linevert * lines + 40
+
+
+    # Should get width of Calliing button to determine left.
+    left = pw + 10
+    top = 0
+    right = left + maxlen + 10
+    bot = top + textvert
+    corner = 15
+    # Could be nice to create shapes.py.
+    poly = (
+        (left, bot),
+        (left, top),
+        (right, top),
+        (right, bot - corner),
+        (right - corner, bot),
+    )
+
+    if textvert  + corner < ph:
+        textvert = ph
+    else:
+        textvert = textvert + corner
+
+    surf = pygame.display.get_surface()
+    pygame.display.set_mode((right, textvert))
+    surf.fill((10, 10, 10))
+    shape = pygame.draw.polygon(surf, fillcolor, poly)
+    cursor = [left + 5, top + 5]
+    # Draw text
+    for t in textblocks:
+        # increase y
+        cursor[1] += linevert
+        surf.blit(t, (cursor))
+
+
+def pavucontrol():
+    os.system("pavucontrol")
+
+
+def web(button):
+    os.system("qutebrowser www.reddit.com/r/france/new")
 
 
 def back():
     s.play(s.effect3)
-    print("BACK MAIN MENU")
     menu(m.mainmenudict, 0, 0, "VCR.ttf", theme1).run()
 
 
-def pinpon():
-    print("PINPONPINPON")
-    #os.system("urxvt")
+def poweroff():
+    os.system("poweroff")
 
 
-def submenu():
-    print("SUB MENU")
-    menu(m.submenudict, 0, 0, "hiragana tfb.ttf", theme1).run()
+def hdmimenu():
+    # HDMI_ONLY
+    # HDMI_ON
+    # HDMI_OFF
+    menu(m.hdmimenudict, 0, 0, "VCR.ttf", theme1).run()
 
 
-actions = {"POLICE": pinpon, "SUBMENU": submenu}
+def powermenu():
+    # POWEROFF
+    menu(m.powermenudict, 0, 0, "VCR.ttf", theme2).run()
+
+
+actions = {
+           "HDMIMENU": hdmimenu,
+           "POWERMENU": powermenu,
+           "AUDIO": pavucontrol,
+           "POWEROFF": powermenu,
+           }
 
 
 class menu:
@@ -44,7 +156,7 @@ class menu:
         self.y = y
 
         self.padding = 10
-        self.border = 10
+        self.border = 5
         self.interbutton = 10
 
         # BASIC COLORS
@@ -103,7 +215,6 @@ class menu:
 
 
     def draw(self):
-        # pygame.display.set_mode((self.w, self.h))
         surf = pygame.display.get_surface()
         surf.fill((0, 0, 0))
         for b in self.buttons:
@@ -126,7 +237,8 @@ class menu:
 
 
     def next(self):
-        s.play(s.effect3)
+        s.play(s.effect1)
+        self.blink(2)
         if self.index < len(self.buttons) - 1:
             self.unselect()
             self.index += 1
@@ -135,7 +247,8 @@ class menu:
 
 
     def previous(self):
-        s.play(s.effect3)
+        s.play(s.effect1)
+        self.blink(2)
         if self.index > 0:
             self.unselect()
             self.index -= 1
@@ -145,6 +258,8 @@ class menu:
 
     def enter(self):
         print("ENTER", self.index)
+        s.play(s.effect3)
+        # use directly index to find action.
         label = self.buttons[self.index].label
         # exec
         self.blink(4)
@@ -158,7 +273,7 @@ class menu:
 
 
     def blink(self, blinks):
-        s.play(s.effect1)
+        #s.play(s.effect1)
         for x in range(blinks):
             self.clock.tick(self.FPS)
             print("BLINK")
@@ -179,18 +294,18 @@ class menu:
                     print("QUIT")
                     pygame.quit()
                     sys.exit()
-                elif e.key == pygame.K_j:
+                if e.key == pygame.K_j:
                     self.next()
-                elif e.key == pygame.K_k:
+                if e.key == pygame.K_k:
                     self.previous()
-                elif e.key == pygame.K_l:
+                if e.key == pygame.K_l:
                     self.enter()
-                elif e.key == pygame.K_h:
+                if e.key == pygame.K_h:
                     self.back()
 
 
     def run(self):
         while True:
-            pygame.display.update()
             self.clock.tick(self.FPS)
             self.update()
+            pygame.display.flip()
