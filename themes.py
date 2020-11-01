@@ -20,8 +20,8 @@ theme1 = {
 theme2 = {
     "txt": red,
     "bg": dred,
-    "border": cyan,
+    "border": red,
     "stxt": cyan,
     "sbg": red,
-    "sborder": pink,
+    "sborder": cyan,
 }

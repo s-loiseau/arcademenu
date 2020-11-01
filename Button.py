@@ -1,4 +1,4 @@
-class button:
+class Button:
     def __init__(self, label, x, y, txtcolor, bgcolor, bordercolor):
         self.label = label
         self.x = x
