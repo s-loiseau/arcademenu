@@ -2,7 +2,7 @@
 import pygame
 import os
 import sys
-from menus import hdmimenu
+from menus import mainmenu
 
 
 if __name__ == "__main__":
@@ -10,7 +10,7 @@ if __name__ == "__main__":
     pygame.init()
     os.environ["SDL_VIDEO_WINDOW_POS"] = "10, 10"
 
-    hdmimenu()
+    mainmenu()
 
     pygame.quit()
     sys.exit()

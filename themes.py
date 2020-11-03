@@ -25,3 +25,11 @@ theme2 = {
     "sbg": red,
     "sborder": cyan,
 }
+theme3 = [[cyan, dyellow, grey],[pink, yellow, pink]]
+
+theme4 = [[red, dred, red],[cyan, red, cyan]]
+
+# normaltxt = theme[0][0]
+# normalbg = theme[0][1]
+# normalborder = theme[0][2]
+# selectedtxt = theme[1][0]
