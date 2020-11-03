@@ -49,7 +49,7 @@ class Button:
     def glitch(self):
         surface = pygame.display.get_surface()
         surface.fill((0,233,0))
-        #rect = pygame.Rect((0,0), (30,220))
+        rect = pygame.Rect((0,0), (30,220))
         pygame.draw.rect(surface, (22,0,0), rect)
         pygame.display.update()
 

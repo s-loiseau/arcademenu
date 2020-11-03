@@ -84,7 +84,7 @@ def mainmenu():
     Menu(mainmenudict, 0, 0, "VCR.ttf", themes.theme1).run()
 
 def hdmimenu():
-    Menu(hdmimenudict, 0, 0, "VCR.ttf", themes.theme1).run()
+    Menu(menu1, 0, 0, "VCR.ttf", themes.theme1).run()
 
 
 def powermenu():
@@ -98,7 +98,6 @@ def audiomenu():
 mainmenudict = {
            "+AUDIOMENU": audiomenu,
            "+POWERMENU": powermenu,
-           "+HDMIMENU": hdmimenu,
            }
 
 
@@ -109,8 +108,9 @@ powermenudict = {
            }
 
 hdmimenudict = {
-           "2560": hdmionly,
-           "1920": hdmi,
+           "1920": hdmionly,
+           "MAIL": mail,
+           "DSFDFLKJ": pavucontrol,
            }
 
 audiomenudict = {
