@@ -81,17 +81,17 @@ def video():
 
 # MENUS
 def mainmenu():
-    Menu(mainmenudict, 0, 0, "VCR.ttf", themes.theme1).run()
+    Menu(mainmenudict, 0, 0, "VCR.ttf", themes.theme2).run()
 
 def hdmimenu():
-    Menu(hdmimenudict, 0, 0, "VCR.ttf", themes.theme1).run()
+    Menu(hdmimenudict, 0, 0, "VCR.ttf", themes.theme2).run()
 
 
 def powermenu():
-    Menu(powermenudict, 0, 0, "katakana tfb.ttf", themes.theme2).run()
+    Menu(powermenudict, 0, 0, "katakana tfb.ttf", themes.theme1).run()
 
 def audiomenu():
-    Menu(audiomenudict, 0, 0, "VCR.ttf", themes.theme2).run()
+    Menu(audiomenudict, 0, 0, "hiragana tfb.ttf", themes.theme1).run()
 
 
 
@@ -103,15 +103,19 @@ mainmenudict = {
 
 
 powermenudict = {
-           "WEB": web,
+           "WEB": mainmenu,
            "MAIL": mail,
            "POWEROFF": pavucontrol,
            }
 
+
 hdmimenudict = {
-           "2560": hdmionly,
-           "1920": hdmi,
+           "0ff+2560": hdmionly,
+           "off+1920": hdmi,
+           "1920+2560": hdmi,
+           "1920+1920": hdmi,
            }
+
 
 audiomenudict = {
            "PAVUCONTROL": pavucontrol,

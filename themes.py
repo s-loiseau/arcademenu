@@ -21,7 +21,7 @@ theme2 = {
     "txt": red,
     "bg": dred,
     "border": red,
-    "stxt": cyan,
+    "stxt": white,
     "sbg": red,
     "sborder": cyan,
 }
