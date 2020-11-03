@@ -133,7 +133,7 @@ class Menu:
             self.select()
             self.draw()
             pygame.display.update()
-        self.buttons[0].draw()
+        self.buttons[0].draw2()
 
 
     def update(self):
