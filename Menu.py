@@ -28,14 +28,11 @@ class Menu:
         self.border = 5
         self.interbutton = 10
 
-        # TODO: Should call theme items directly, and litteraly be managed in Button class.
-        # SELECT COLORS
 
         self.larger_label = max([len(x) for x in self.menudict.keys()])
         # GUESS DIMENSIONS FONT :
-        self.font = pygame.font.Font(
-            os.path.join(fontdir, self.fontname), self.fontsize
-        )
+        self.font = pygame.font.Font( os.path.join(fontdir, self.fontname), self.fontsize)
+
         _, _, self.textw, self.texth = self.font.render(
             self.larger_label * "X", True, (0, 0, 0)
         ).get_rect()
@@ -47,7 +44,6 @@ class Menu:
             + (len(self.menudict.keys()) * (self.texth + 2 * self.padding))
             + ((len(self.menudict.keys()) - 1) * self.interbutton)
         )
-        print("sizeblock", self.w, self.h)
 
         self.buttons = []
         bx, by = self.border, self.border
@@ -59,32 +55,30 @@ class Menu:
         pygame.display.set_mode((self.w, self.h))
         # set color of defaut selection 0
         self.select()
+        surf = pygame.display.get_surface()
+        surf.fill((0, 0, 0))
         self.draw()
 
 
 
     def draw(self):
         surf = pygame.display.get_surface()
-        surf.fill((0, 0, 0))
         for b in self.buttons:
             b.draw()
+        pygame.display.flip()
+
 
     def select(self):
         self.buttons[self.index].selected = 1
-
-
-    def next(self):
-        s.play(s.effect1)
 
 
     def unselect(self):
         self.buttons[self.index].selected = 0
 
 
-
     def next(self):
         s.play(s.effect1)
-        self.blink(2)
+        #self.blink(2)
         if self.index < len(self.buttons) - 1:
             self.unselect()
             self.index += 1
@@ -94,7 +88,6 @@ class Menu:
 
     def previous(self):
         s.play(s.effect1)
-        self.blink(2)
         if self.index > 0:
             self.unselect()
             self.index -= 1
@@ -105,9 +98,11 @@ class Menu:
     def enter(self):
         s.play(s.effect3)
         label = self.buttons[self.index].label
-        self.blink(4)
+        self.blink(2)
         action = self.menudict[label]
         action()
+        self.update()
+        self.draw()
 
 
     def back(self):
@@ -115,22 +110,22 @@ class Menu:
 
 
     def blink(self, blinks):
+        print("blink")
         for x in range(blinks):
             self.clock.tick(self.FPS)
             self.unselect()
-            self.draw()
+            self.buttons[self.index].draw()
             pygame.display.update()
 
             self.clock.tick(self.FPS)
             self.select()
-            self.draw()
+            self.buttons[self.index].draw()
             pygame.display.update()
-        self.buttons[0].draw()
 
 
     def update(self):
         for e in pygame.event.get():
-            print("DRAW")
+            print("UPDATE")
             pygame.display.set_mode((self.w, self.h))
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_q:
@@ -148,8 +143,8 @@ class Menu:
 
 
     def run(self):
+        self.draw()
+        pygame.display.flip()
         while self.active:
             self.clock.tick(self.FPS)
             self.update()
-            self.draw()
-            pygame.display.flip()

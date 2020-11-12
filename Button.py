@@ -19,8 +19,7 @@ class Button:
 
 
     def debug(self):
-        print(self.label, self.x, self.y)
-        print(self.colors)
+        print(self.label, self.x, self.y, self.colors)
 
 
     def drawpoly(self, y, color, width=0):
@@ -48,6 +47,7 @@ class Button:
         self.drawpoly(self.y, self.bgcolor)
         self.drawpoly(self.y, self.bordercolor, 3)
         surf.blit(textblock, (self.x + self.padding, self.y + self.padding))
+        pygame.display.update()
 
 
     def glitch(self):
