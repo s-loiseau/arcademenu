@@ -7,8 +7,6 @@ import themes
 
  rofi -show run
  thunar
- /usr/bin/python /home/krao/Code/pygame/exoclass/main.py
- feh --randomize --bg-fill ~/Pictures/wallpaper/*
 
  showb.sh
  showv.sh
@@ -57,10 +55,12 @@ def mute():
 ## VIDEO
 def hdmionly():
     os.system("~/.screenlayout/onlyhdmi19.sh")
+    os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
 
 
 def hdmi():
     os.system("~/.screenlayout/1920hdmi2.sh")
+    os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
 
 ## APPS
 def terminal():
@@ -81,7 +81,7 @@ def video():
 
 # MENUS
 def mainmenu():
-    Menu(mainmenudict, 0, 0, "VCR.ttf", themes.theme2).run()
+    Menu(mainmenudict, 0, 0, "VCR.ttf", themes.theme1).run()
 
 def hdmimenu():
     Menu(hdmimenudict, 0, 0, "VCR.ttf", themes.theme2).run()
@@ -91,7 +91,7 @@ def powermenu():
     Menu(powermenudict, 0, 0, "katakana tfb.ttf", themes.theme1).run()
 
 def audiomenu():
-    Menu(audiomenudict, 0, 0, "hiragana tfb.ttf", themes.theme1).run()
+    Menu(audiomenudict, 0, 0, "hiragana tfb.ttf", themes.theme2).run()
 
 
 
@@ -99,13 +99,14 @@ mainmenudict = {
            "+AUDIOMENU": audiomenu,
            "+POWERMENU": powermenu,
            "+HDMIMENU": hdmimenu,
+           "NANI": video,
            }
 
 
 powermenudict = {
            "WEB": mainmenu,
            "MAIL": mail,
-           "POWEROFF": pavucontrol,
+           "pavuContr0l": pavucontrol,
            }
 
 

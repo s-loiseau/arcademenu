@@ -29,14 +29,7 @@ class Menu:
         self.interbutton = 10
 
         # TODO: Should call theme items directly, and litteraly be managed in Button class.
-        # BASIC COLORS
-        self.txt = self.theme["txt"]
-        self.bg = self.theme["bg"]
-        self.brdr = self.theme["border"]
         # SELECT COLORS
-        self.selecttxt = self.theme["stxt"]
-        self.selectbg = self.theme["sbg"]
-        self.selectborder = self.theme["sborder"]
 
         self.larger_label = max([len(x) for x in self.menudict.keys()])
         # GUESS DIMENSIONS FONT :
@@ -59,7 +52,7 @@ class Menu:
         self.buttons = []
         bx, by = self.border, self.border
         for k in self.menudict.keys():
-            self.buttons.append(Button(k, bx, by, self.txt, self.bg, self.brdr, self.padding, self.theme, self.font, self.w, self.h))
+            self.buttons.append(Button(k, bx, by, self.padding, self.theme, self.font, self.w, self.h))
             by += self.padding * 2 + self.texth + self.interbutton
 
 
@@ -74,20 +67,19 @@ class Menu:
         surf = pygame.display.get_surface()
         surf.fill((0, 0, 0))
         for b in self.buttons:
-            b.draw2()
+            b.draw()
 
     def select(self):
         self.buttons[self.index].selected = 1
-        self.buttons[self.index].txtcolor = self.selecttxt
-        self.buttons[self.index].bgcolor = self.selectbg
-        self.buttons[self.index].bordercolor = self.selectborder
+
+
+    def next(self):
+        s.play(s.effect1)
 
 
     def unselect(self):
         self.buttons[self.index].selected = 0
-        self.buttons[self.index].txtcolor = self.txt
-        self.buttons[self.index].bgcolor = self.bg
-        self.buttons[self.index].bordercolor = self.brdr
+
 
 
     def next(self):
@@ -133,7 +125,7 @@ class Menu:
             self.select()
             self.draw()
             pygame.display.update()
-        self.buttons[0].draw2()
+        self.buttons[0].draw()
 
 
     def update(self):
