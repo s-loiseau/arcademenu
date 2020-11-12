@@ -76,7 +76,7 @@ def poweroff():
 
 ## FUNNY
 def video():
-    os.system("mpv --really-quiet /home/krao/Videos/joueurdugrenierrage.mp4 &")
+    os.system("mpv --really-quiet ~/Videos/joueurdugrenierrage.mp4 &")
 
 
 # MENUS
