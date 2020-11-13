@@ -1,4 +1,5 @@
 import os
+import time
 import sys
 import pygame
 from Button import Button
@@ -125,16 +126,24 @@ class Menu:
 
     def update(self):
         for e in pygame.event.get():
+
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_j]:
+                self.next()
+                time.sleep(0.1)
+            if keys[pygame.K_k]:
+                self.previous()
+                time.sleep(0.1)
+
             if e.type == pygame.KEYDOWN:
-                print("UPDATE " + str(self))
                 if e.key == pygame.K_q:
                     print("QUIT")
                     pygame.quit()
                     sys.exit()
-                if e.key == pygame.K_j:
-                    self.next()
-                if e.key == pygame.K_k:
-                    self.previous()
+                #if e.key == pygame.K_j:
+                    #self.next()
+                #if e.key == pygame.K_k:
+                    #self.previous()
                 if e.key == pygame.K_l:
                     self.enter()
                 if e.key == pygame.K_h:
