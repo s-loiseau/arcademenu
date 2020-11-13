@@ -21,15 +21,10 @@ class Button:
     def select(self):
         self.selected = 1
         self.update()
-        #self.draw()
 
     def unselect(self):
         self.selected = 0
         self.update()
-        #self.draw()
-
-    def debug(self):
-        print(self.label, self.x, self.y, self.colors)
 
 
     def drawpoly(self, y, color, width=0):
@@ -51,21 +46,11 @@ class Button:
 
     def draw(self):
         self.update()
-        self.debug()
         surf = pygame.display.get_surface()
         textblock = self.font.render(self.label, True, self.txtcolor)
         self.drawpoly(self.y, self.bgcolor)
         self.drawpoly(self.y, self.bordercolor, 3)
         surf.blit(textblock, (self.x + self.padding, self.y + self.padding))
-        pygame.display.update()
-
-
-    def glitch(self):
-        surf = pygame.display.get_surface()
-        #surf.fill((0,233,0))
-        rect = pygame.Rect((0,0), (30,220))
-        pygame.draw.rect(surf, (22,0,0), rect)
-        #pygame.display.update()
 
 
     def update(self):

@@ -66,7 +66,7 @@ class Menu:
         surf = pygame.display.get_surface()
         for b in self.buttons:
             b.draw()
-        pygame.display.flip()
+        pygame.display.update()
 
 
     def select(self):
@@ -98,7 +98,7 @@ class Menu:
     def enter(self):
         s.play(s.effect3)
         label = self.buttons[self.index].label
-        self.blink(4)
+        #self.blink(4)
         action = self.menudict[label]
         action()
         self.update()
@@ -143,7 +143,7 @@ class Menu:
 
     def run(self):
         self.draw()
-        pygame.display.flip()
+        pygame.display.update()
         while self.active:
             self.clock.tick(self.FPS)
             self.update()
