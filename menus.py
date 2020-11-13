@@ -88,10 +88,10 @@ def hdmimenu():
 
 
 def powermenu():
-    Menu(powermenudict, 0, 0, "katakana tfb.ttf", themes.theme1).run()
+    Menu(powermenudict, 0, 0, "VCR.ttf", themes.theme1).run()
 
 def audiomenu():
-    Menu(audiomenudict, 0, 0, "hiragana tfb.ttf", themes.theme2).run()
+    Menu(audiomenudict, 0, 0, "VCR.ttf", themes.theme2).run()
 
 
 
@@ -100,6 +100,10 @@ mainmenudict = {
            "+POWERMENU": powermenu,
            "+HDMIMENU": hdmimenu,
            "NANI": video,
+           "sdfsdf": video,
+           "fdadsf": video,
+           "NAfdadsf": video,
+           "fdddadsf": video,
            }
 
 

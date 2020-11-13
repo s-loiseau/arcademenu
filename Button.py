@@ -18,6 +18,16 @@ class Button:
         self.padding = padding
 
 
+    def select(self):
+        self.selected = 1
+        self.update()
+        #self.draw()
+
+    def unselect(self):
+        self.selected = 0
+        self.update()
+        #self.draw()
+
     def debug(self):
         print(self.label, self.x, self.y, self.colors)
 
@@ -52,7 +62,7 @@ class Button:
 
     def glitch(self):
         surf = pygame.display.get_surface()
-        surf.fill((0,233,0))
+        #surf.fill((0,233,0))
         rect = pygame.Rect((0,0), (30,220))
         pygame.draw.rect(surf, (22,0,0), rect)
         #pygame.display.update()

@@ -56,12 +56,13 @@ class Menu:
         # set color of defaut selection 0
         self.select()
         surf = pygame.display.get_surface()
-        surf.fill((0, 0, 0))
+        #surf.fill((0, 0, 0))
         self.draw()
 
 
 
     def draw(self):
+        pygame.display.set_mode((self.w, self.h))
         surf = pygame.display.get_surface()
         for b in self.buttons:
             b.draw()
@@ -69,16 +70,15 @@ class Menu:
 
 
     def select(self):
-        self.buttons[self.index].selected = 1
+        self.buttons[self.index].select()
 
 
     def unselect(self):
-        self.buttons[self.index].selected = 0
+        self.buttons[self.index].unselect()
 
 
     def next(self):
         s.play(s.effect1)
-        #self.blink(2)
         if self.index < len(self.buttons) - 1:
             self.unselect()
             self.index += 1
@@ -98,7 +98,7 @@ class Menu:
     def enter(self):
         s.play(s.effect3)
         label = self.buttons[self.index].label
-        self.blink(2)
+        self.blink(4)
         action = self.menudict[label]
         action()
         self.update()
@@ -125,9 +125,8 @@ class Menu:
 
     def update(self):
         for e in pygame.event.get():
-            print("UPDATE")
-            pygame.display.set_mode((self.w, self.h))
             if e.type == pygame.KEYDOWN:
+                print("UPDATE " + str(self))
                 if e.key == pygame.K_q:
                     print("QUIT")
                     pygame.quit()
