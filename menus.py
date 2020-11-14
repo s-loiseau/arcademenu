@@ -40,8 +40,8 @@ mainmenu
 
 # ACTIONS
 def popup():
-    obj = Popup(10,30,"GROSSE DATA")
-    obj.draw()
+    obj = Popup("GROSSE DATA", "VCR.ttf")
+    obj.run()
 
 ## AUDIO
 """
