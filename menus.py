@@ -1,4 +1,5 @@
 from Menu import Menu
+from Popup import Popup
 import os
 import themes
 
@@ -38,8 +39,33 @@ mainmenu
 """
 
 # ACTIONS
+def popup():
+    obj = Popup(10,30,"GROSSE DATA")
+    obj.draw()
 
 ## AUDIO
+"""
+if [ $status_hdmi -eq 1 ];then
+    # TURN OFF HDMI VIDEO OUTPUT
+    xrandr --output HDMI-2 --off
+    # SWITCH TO SPEAKER
+    pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
+    message='SPEAKER'
+elif [ $status_speaker -eq 1 ]; then
+    # TURN ON HDMI VIDEO OUTPUT
+    xrandr --output HDMI-2 --auto
+    # SWITCH TO HDMI AUDIO
+    pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo
+    message='HDMI'
+fi
+"""
+
+def audiohdmi():
+    os.system("pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo")
+
+def audiospeaker():
+    os.system("pactl set-card-profile 0 output:analog-stereo+input:analog-stereo")
+
 def pavucontrol():
     os.system("pavucontrol &")
 
@@ -100,10 +126,7 @@ mainmenudict = {
            "+POWERMENU": powermenu,
            "+HDMIMENU": hdmimenu,
            "NANI": video,
-           "sdfsdf": video,
-           "fdadsf": video,
-           "NAfdadsf": video,
-           "fdddadsf": video,
+           "popup": popup,
            }
 
 
@@ -123,9 +146,11 @@ hdmimenudict = {
 
 
 audiomenudict = {
-           "PAVUCONTROL": pavucontrol,
+           "HDMIOUT": audiohdmi,
+           "SPEADKEROUT": audiospeaker,
            "UP": volumeup,
            "DOWN": volumedown,
            "MUTE": mute,
+           "PAVUCONTROL": pavucontrol,
            }
 

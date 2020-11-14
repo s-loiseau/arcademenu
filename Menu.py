@@ -84,6 +84,7 @@ class Menu:
             self.unselect()
             self.index += 1
             self.select()
+        self.buttons[self.index].blink(2)
         self.draw()
 
 
@@ -93,6 +94,7 @@ class Menu:
             self.unselect()
             self.index -= 1
             self.select()
+        self.buttons[self.index].blink(2)
         self.draw()
 
 
@@ -107,33 +109,22 @@ class Menu:
 
 
     def back(self):
+        s.play(s.effect3)
         self.active = False
 
 
-    def blink(self, blinks):
-        print("blink")
-        for x in range(blinks):
-            self.clock.tick(self.FPS)
-            self.unselect()
-            self.buttons[self.index].draw()
-            pygame.display.update()
-
-            self.clock.tick(self.FPS)
-            self.select()
-            self.buttons[self.index].draw()
-            pygame.display.update()
 
 
     def update(self):
         for e in pygame.event.get():
 
+            # key that can be held.
             keys = pygame.key.get_pressed()
             if keys[pygame.K_j]:
                 self.next()
-                time.sleep(0.1)
             if keys[pygame.K_k]:
                 self.previous()
-                time.sleep(0.1)
+            #self.clock.tick(2)
 
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_q:

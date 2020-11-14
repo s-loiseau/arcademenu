@@ -9,6 +9,6 @@ green = (255, 0, 0)
 yellow = (240, 240, 0)
 dyellow = (100, 100, 0)
 
-theme1 = [[cyan, dyellow, grey],[pink, yellow, pink]]
+theme1 = [[black, dyellow, black],[pink, yellow, pink]]
 
 theme2 = [[red, dred, red],[cyan, red, cyan]]

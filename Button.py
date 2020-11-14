@@ -16,6 +16,8 @@ class Button:
         self.bgcolor = self.colors[1]
         self.bordercolor = self.colors[2]
         self.padding = padding
+        self.clock = pygame.time.Clock()
+        self.FPS = 60
 
 
     def select(self):
@@ -59,3 +61,25 @@ class Button:
         self.txtcolor = self.colors[0]
         self.bgcolor = self.colors[1]
         self.bordercolor = self.colors[2]
+
+    def glitch(self):
+        surf = pygame.display.get_surface()
+        _w = self.w - 2 * self.x
+        _h = 2 * self.padding + 30
+        #pygame.draw.rect(surf, (255,255,255), pygame.Rect(self.x,self.y,_w, _h))
+        self.drawpoly(self.y, (0,255,0))
+
+    def blink(self, blinks):
+        surf = pygame.display.get_surface()
+        for x in range(blinks):
+            self.clock.tick(self.FPS)
+            self.unselect()
+            self.draw()
+            self.glitch()
+            self.clock.tick(self.FPS)
+            pygame.display.update()
+
+            self.clock.tick(self.FPS)
+            self.select()
+            self.draw()
+            pygame.display.update()
