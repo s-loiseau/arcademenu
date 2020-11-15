@@ -43,7 +43,7 @@ mainmenu
 ## Actions with output.
 def popup(command):
     data = subprocess.check_output(command, shell=True)
-    data = data.splitlines()
+    data = data.decode('utf-8')
     print(data)
     obj = Popup(data, "VCR.ttf")
     obj.run()
