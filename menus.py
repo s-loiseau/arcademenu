@@ -2,6 +2,7 @@ from Menu import Menu
 from Popup import Popup
 import os
 import themes
+import subprocess
 
 """
  bindsym $mod+Return           exec urxvt -geometry 80x40
@@ -39,26 +40,27 @@ mainmenu
 """
 
 # ACTIONS
-def popup():
-    obj = Popup("GROSSE DATA", "VCR.ttf")
+## Actions with output.
+def popup(command):
+    data = subprocess.check_output(command, shell=True)
+    data = data.splitlines()
+    print(data)
+    obj = Popup(data, "VCR.ttf")
     obj.run()
 
+def ipaddr():
+    command = "ip addr show"
+    popup(command)
+
+def netstat():
+    command = "netstat -nt"
+    popup(command)
+
+def cat():
+    command = "cat ~/Documents/Notes/COMMANDO.md"
+    popup(command)
+
 ## AUDIO
-"""
-if [ $status_hdmi -eq 1 ];then
-    # TURN OFF HDMI VIDEO OUTPUT
-    xrandr --output HDMI-2 --off
-    # SWITCH TO SPEAKER
-    pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
-    message='SPEAKER'
-elif [ $status_speaker -eq 1 ]; then
-    # TURN ON HDMI VIDEO OUTPUT
-    xrandr --output HDMI-2 --auto
-    # SWITCH TO HDMI AUDIO
-    pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo
-    message='HDMI'
-fi
-"""
 
 def audiohdmi():
     os.system("pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo")
@@ -126,7 +128,9 @@ mainmenudict = {
            "+POWERMENU": powermenu,
            "+HDMIMENU": hdmimenu,
            "NANI": video,
-           "popup": popup,
+           "IP": ipaddr,
+           "cat": cat,
+           "netstat": netstat,
            }
 
 
