@@ -49,7 +49,7 @@ def popup(command):
     obj.run()
 
 def ipaddr():
-    command = "ip addr show"
+    command = "ip addr show|grep -v link | grep -v valid | grep -v inet6 | grep inet"
     popup(command)
 
 def netstat():
@@ -82,12 +82,20 @@ def mute():
 
 ## VIDEO
 def hdmionly():
-    os.system("~/.screenlayout/onlyhdmi19.sh")
+    os.system("~/.screenlayout/onlyhdmi2560.sh")
     os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
 
 
-def hdmi():
+def hdmion():
     os.system("~/.screenlayout/1920hdmi2.sh")
+    os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
+
+def hdmioff():
+    os.system("~/.screenlayout/1920hdmi2.sh")
+    os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
+
+def hdmi1920():
+    os.system("~/.screenlayout/onlyhdmi19.sh")
     os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
 
 ## APPS
@@ -143,9 +151,9 @@ powermenudict = {
 
 hdmimenudict = {
            "0ff+2560": hdmionly,
-           "off+1920": hdmi,
-           "1920+2560": hdmi,
-           "1920+1920": hdmi,
+           "off+1920": hdmi1920,
+           "1920+2560": hdmion,
+           "1920+Off": hdmioff,
            }
 
 

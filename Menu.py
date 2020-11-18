@@ -3,7 +3,7 @@ import time
 import sys
 import pygame
 from Button import Button
-import sounds as s
+#import sounds as s
 
 
 
@@ -79,7 +79,7 @@ class Menu:
 
 
     def next(self):
-        s.play(s.effect1)
+        #s.play(s.effect1)
         if self.index < len(self.buttons) - 1:
             self.unselect()
             self.index += 1
@@ -89,7 +89,7 @@ class Menu:
 
 
     def previous(self):
-        s.play(s.effect1)
+        #s.play(s.effect1)
         if self.index > 0:
             self.unselect()
             self.index -= 1
@@ -99,7 +99,7 @@ class Menu:
 
 
     def enter(self):
-        s.play(s.effect3)
+        #s.play(s.effect3)
         label = self.buttons[self.index].label
         #self.blink(4)
         action = self.menudict[label]
@@ -109,7 +109,7 @@ class Menu:
 
 
     def back(self):
-        s.play(s.effect3)
+        #s.play(s.effect3)
         self.active = False
 
 

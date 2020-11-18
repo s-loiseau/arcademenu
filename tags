@@ -1,0 +1,84 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/a3c87ab5/
+Button	Button.py	/^class Button:$/;"	c
+Like:	todo.md	/^## Like:$/;"	s
+Menu	Menu.py	/^class Menu:$/;"	c
+Menus dynamic	todo.md	/^# Menus dynamic$/;"	c
+Popup	Popup.py	/^class Popup():$/;"	c
+Textwrap	todo.md	/^# Textwrap$/;"	c
+__init__	Button.py	/^    def __init__(self, label, x, y, padding, theme, font, menuw, menuh):$/;"	m	class:Button
+__init__	Menu.py	/^    def __init__(self, menudict, x, y, fontname, theme):$/;"	m	class:Menu
+__init__	Popup.py	/^    def __init__(self, data, font):$/;"	m	class:Popup
+audiohdmi	menus.py	/^def audiohdmi():$/;"	f
+audiomenu	menus.py	/^def audiomenu():$/;"	f
+audiomenudict	menus.py	/^audiomenudict = {$/;"	v
+audiospeaker	menus.py	/^def audiospeaker():$/;"	f
+back	Menu.py	/^    def back(self):$/;"	m	class:Menu
+black	themes.py	/^black = (0, 0, 0)$/;"	v
+blink	Button.py	/^    def blink(self, blinks):$/;"	m	class:Button
+cat	menus.py	/^def cat():$/;"	f
+cyan	themes.py	/^cyan = (0, 225, 255)$/;"	v
+draw	Button.py	/^    def draw(self):$/;"	m	class:Button
+draw	Menu.py	/^    def draw(self):$/;"	m	class:Menu
+draw	Popup.py	/^    def draw(self):$/;"	m	class:Popup
+drawpoly	Button.py	/^    def drawpoly(self, y, color, width=0):$/;"	m	class:Button
+dred	themes.py	/^dred = (180, 0, 0)$/;"	v
+dyellow	themes.py	/^dyellow = (100, 100, 0)$/;"	v
+effect1	sounds.py	/^effect1 = pygame.mixer.Sound(os.path.join(sounddir, "comperror.wav"))$/;"	v
+effect2	sounds.py	/^effect2 = pygame.mixer.Sound(os.path.join(sounddir, "compstart.wav"))$/;"	v
+effect3	sounds.py	/^effect3 = pygame.mixer.Sound(os.path.join(sounddir, "robot.wav"))$/;"	v
+enter	Menu.py	/^    def enter(self):$/;"	m	class:Menu
+for Popup, handle long text with textwrap module.	todo.md	/^## for Popup, handle long text with textwrap module.$/;"	s
+glitch	Button.py	/^    def glitch(self):$/;"	m	class:Button
+green	themes.py	/^green = (255, 0, 0)$/;"	v
+grey	themes.py	/^grey = (150, 150, 150)$/;"	v
+hdmi	menus.py	/^def hdmi():$/;"	f
+hdmimenu	menus.py	/^def hdmimenu():$/;"	f
+hdmimenudict	menus.py	/^hdmimenudict = {$/;"	v
+hdmionly	menus.py	/^def hdmionly():$/;"	f
+ipaddr	menus.py	/^def ipaddr():$/;"	f
+labels could be used as args for a specific command.	todo.md	/^## labels could be used as args for a specific command.$/;"	s
+mail	menus.py	/^def mail():$/;"	f
+maindir	sounds.py	/^maindir = os.path.dirname(__file__)$/;"	v
+mainmenu	menus.py	/^def mainmenu():$/;"	f
+mainmenudict	menus.py	/^mainmenudict = {$/;"	v
+mute	menus.py	/^def mute():$/;"	f
+netstat	menus.py	/^def netstat():$/;"	f
+next	Menu.py	/^    def next(self):$/;"	m	class:Menu
+pavucontrol	menus.py	/^def pavucontrol():$/;"	f
+pink	themes.py	/^pink = (255, 0, 255)$/;"	v
+play	sounds.py	/^def play(sound):$/;"	f
+popup	menus.py	/^def popup(command):$/;"	f
+powermenu	menus.py	/^def powermenu():$/;"	f
+powermenudict	menus.py	/^powermenudict = {$/;"	v
+poweroff	menus.py	/^def poweroff():$/;"	f
+previous	Menu.py	/^    def previous(self):$/;"	m	class:Menu
+red	themes.py	/^red = (255, 0, 0)$/;"	v
+run	Menu.py	/^    def run(self):$/;"	m	class:Menu
+run	Popup.py	/^    def run(self):$/;"	m	class:Popup
+s	Menu.py	/^import sounds as s$/;"	I
+select	Button.py	/^    def select(self):$/;"	m	class:Button
+select	Menu.py	/^    def select(self):$/;"	m	class:Menu
+should limit output length.	todo.md	/^## should limit output length.$/;"	s
+sounddir	sounds.py	/^sounddir= os.path.join(maindir, 'sounds')$/;"	v
+terminal	menus.py	/^def terminal():$/;"	f
+theme1	themes.py	/^theme1 = [[black, dyellow, black],[pink, yellow, pink]]$/;"	v
+theme2	themes.py	/^theme2 = [[red, dred, red],[cyan, red, cyan]]$/;"	v
+unselect	Button.py	/^    def unselect(self):$/;"	m	class:Button
+unselect	Menu.py	/^    def unselect(self):$/;"	m	class:Menu
+update	Button.py	/^    def update(self):$/;"	m	class:Button
+update	Menu.py	/^    def update(self):$/;"	m	class:Menu
+update	Popup.py	/^    def update(self):$/;"	m	class:Popup
+video	menus.py	/^def video():$/;"	f
+volumedown	menus.py	/^def volumedown():$/;"	f
+volumeup	menus.py	/^def volumeup():$/;"	f
+web	menus.py	/^def web():$/;"	f
+white	themes.py	/^white = (255, 255, 255)$/;"	v
+work on dir scanner or else to build a list of args, as button	todo.md	/^## work on dir scanner or else to build a list of args, as button$/;"	s
+yellow	themes.py	/^yellow = (240, 240, 0)$/;"	v

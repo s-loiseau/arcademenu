@@ -27,7 +27,7 @@ class Popup():
         self.y = self.padding
         self.cursor = 0
         self.scroll = 0
-        self.scroll -= self.h
+        self.scroll += self.h
         self.clock = pygame.time.Clock()
         self.FPS = 10
 
@@ -39,12 +39,15 @@ class Popup():
             keys = pygame.key.get_pressed()
             if keys[pygame.K_q] or keys[pygame.K_h]:
                 self.active = False
+                self.draw()
             if keys[pygame.K_j]:
-                self.scroll -= 0
+                self.scroll -= self.h
                 self.draw()
+                continue
             elif keys[pygame.K_k]:
-                self.scroll += 0
+                self.scroll += self.h
                 self.draw()
+                continue
             if keys[pygame.K_l]:
                 self.scroll = 0
                 self.draw()
@@ -84,7 +87,7 @@ class Popup():
 
         pygame.display.set_mode((maxlen + 2 * self.h, winh))
 
-        y = self.y + self.scroll
+        y = self.scroll
         surf = pygame.display.get_surface()
         textobj = textobjs[0]
         pygame.draw.rect(surf, (244,34,244), pygame.Rect(self.x, self.h, maxlen, self.h ))
