@@ -60,6 +60,15 @@ def cat():
     command = "cat ~/Documents/Notes/COMMANDO.md"
     popup(command)
 
+## ROFI MENUS
+def mangas():
+    os.system("showb.py &")
+
+def videos():
+    os.system("showv.py &")
+
+def books():
+    os.system("showb.py &")
 ## AUDIO
 
 def audiohdmi():
@@ -91,7 +100,7 @@ def hdmion():
     os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
 
 def hdmioff():
-    os.system("~/.screenlayout/1920hdmi2.sh")
+    os.system("~/.screenlayout/nohdmi.sh")
     os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
 
 def hdmi1920():
@@ -139,6 +148,9 @@ mainmenudict = {
            "IP": ipaddr,
            "cat": cat,
            "netstat": netstat,
+           "VIDEOS": videos,
+           "BOOKS": books,
+           "MANGAS": mangas,
            }
 
 
