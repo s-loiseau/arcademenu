@@ -19,7 +19,6 @@ class Button:
         self.clock = pygame.time.Clock()
         self.FPS = 60
 
-
     def select(self):
         self.selected = 1
         self.update()
@@ -27,7 +26,6 @@ class Button:
     def unselect(self):
         self.selected = 0
         self.update()
-
 
     def drawpoly(self, y, color, width=0):
         surf = pygame.display.get_surface()
@@ -42,9 +40,8 @@ class Button:
             (self.x, self.y + _h),
         )
         pygame.draw.polygon(surf, color, self.poly, width)
-        #pygame.draw.line(surf, color, (0,self.y), (self.w,self.y), 3)
-        #pygame.draw.line(surf, color, (0,self.y + _h), (self.w,self.y + _h), 3)
-
+        # pygame.draw.line(surf, color, (0,self.y), (self.w,self.y), 3)
+        # pygame.draw.line(surf, color, (0,self.y + _h), (self.w,self.y + _h), 3)
 
     def draw(self):
         self.update()
@@ -53,7 +50,6 @@ class Button:
         self.drawpoly(self.y, self.bgcolor)
         self.drawpoly(self.y, self.bordercolor, 3)
         surf.blit(textblock, (self.x + self.padding, self.y + self.padding))
-
 
     def update(self):
         # change colors
@@ -66,8 +62,8 @@ class Button:
         surf = pygame.display.get_surface()
         _w = self.w - 2 * self.x
         _h = 2 * self.padding + 30
-        #pygame.draw.rect(surf, (255,255,255), pygame.Rect(self.x,self.y,_w, _h))
-        self.drawpoly(self.y, (0,255,0))
+        # pygame.draw.rect(surf, (255,255,255), pygame.Rect(self.x,self.y,_w, _h))
+        self.drawpoly(self.y, (0, 255, 0))
 
     def blink(self, blinks):
         surf = pygame.display.get_surface()
