@@ -4,22 +4,22 @@ import sys
 import pygame
 from Button import Button
 import sounds as s
+#from menus import mainmenu
 
 
 class Menu:
     def __init__(self, menudict, x, y, fontname, theme):
         maindir = os.path.dirname(__file__)
-        self.active = True
         fontdir = os.path.join(maindir, "fonts")
         self.fontname = fontname
         self.theme = theme
 
         self.fontsize = 30
 
-        self.FPS = 60
-        self.clock = pygame.time.Clock()
+        self.active = True
 
         self.index = 0
+
         self.menudict = menudict
         self.x = x
         self.y = y
@@ -37,7 +37,7 @@ class Menu:
         _, _, self.textw, self.texth = self.font.render(
             self.larger_label * "X", True, (0, 0, 0)
         ).get_rect()
-        print("sizeblock", self.textw, self.texth)
+        #print("sizeblock", self.textw, self.texth)
 
         self.w = self.textw + 2 * self.border + 2 * self.padding
         self.h = (
@@ -55,90 +55,77 @@ class Menu:
             )
             by += self.padding * 2 + self.texth + self.interbutton
 
-        pygame.display.set_mode((self.w, self.h))
+        pygame.display.set_mode((self.w, self.h), vsync=1)
+
         # set color of defaut selection 0
-        self.select()
-        surf = pygame.display.get_surface()
-        # surf.fill((0, 0, 0))
+        self.buttons[self.index].select()
         self.draw()
+
+
+    def fixwindowsize(self):
+        # if screen size is not good , set_mode again
+        _w, _h = pygame.display.get_window_size()
+
+        if self.w != _h or self.h != _w:
+            pygame.display.set_mode((self.w, self.h), vsync=1)
+
+
 
     def draw(self):
-        pygame.display.set_mode((self.w, self.h))
+        print(self.h, self.w)
+        print(pygame.display.get_window_size())
         surf = pygame.display.get_surface()
+        surf.fill((0,0,0))
         for b in self.buttons:
             b.draw()
-        pygame.display.update()
+        pygame.display.flip()
 
-    def select(self):
-        self.buttons[self.index].select()
-
-    def unselect(self):
-        self.buttons[self.index].unselect()
 
     def next(self):
-        s.play(s.effect1)
-
         if self.index < len(self.buttons) - 1:
-            self.unselect()
-            self.index += 1
-            self.select()
-
-        self.buttons[self.index].blink(2)
-        self.draw()
+            self.move(1)
 
     def previous(self):
-        s.play(s.effect1)
-
         if self.index > 0:
-            self.unselect()
-            self.index -= 1
-            self.select()
+            self.move(-1)
 
-        self.buttons[self.index].blink(2)
+    def move(self,direction):
+        s.play(s.effect1)
+        self.buttons[self.index].unselect()
+        self.index = self.index + direction
+        self.buttons[self.index].select()
         self.draw()
 
     def enter(self):
-        s.play(s.effect3)
-
         label = self.buttons[self.index].label
-        # self.blink(4)
         action = self.menudict[label]
         action()
-        self.update()
         self.draw()
 
     def back(self):
-        s.play(s.effect3)
+        #s.play(s.effect3)
         self.active = False
+        #self.update()
+        pass
+
 
     def update(self):
         for e in pygame.event.get():
-
-            # key that can be held.
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_j]:
-                self.next()
-            if keys[pygame.K_k]:
-                self.previous()
-            # self.clock.tick(2)
-
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_q:
                     print("QUIT")
                     pygame.quit()
                     sys.exit()
-                # if e.key == pygame.K_j:
-                # self.next()
-                # if e.key == pygame.K_k:
-                # self.previous()
                 if e.key == pygame.K_l:
                     self.enter()
                 if e.key == pygame.K_h:
                     self.back()
+                    self.fixwindowsize()
+                if e.key == pygame.K_j:
+                    self.next()
+                if e.key == pygame.K_k:
+                    self.previous()
 
     def run(self):
-        self.draw()
-        pygame.display.update()
         while self.active:
-            self.clock.tick(self.FPS)
             self.update()
