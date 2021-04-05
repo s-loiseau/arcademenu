@@ -117,7 +117,7 @@ class Menu:
                     self.menudict[label]()
 
                 elif e.key == pygame.K_h:
-                    time.sleep(0.01)
+                    time.sleep(0.05)
                     self.active = False
 
                 elif e.key == pygame.K_j:

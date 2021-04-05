@@ -12,13 +12,25 @@ dyellow = (100, 100, 0)
 
 # theme[0] inactive button
 # theme[1] active button
-theme1 = [
-        [yellow, dyellow, yellow],
+banana = [
+        [yellow, dyellow, dyellow],
         [cyan, yellow, dyellow]
         ]
 
-theme2 = [
+theme1 = [
+        [yellow, dyellow, dyellow],
+        [cyan, yellow, green]
+        ]
+
+pinky = [
         [red, dred, red],
+        [cyan, red, pink]
+        ]
+
+
+black = [
+        [black, grey, grey],
         [cyan, red, dred]
         ]
 
+theme2 = pinky

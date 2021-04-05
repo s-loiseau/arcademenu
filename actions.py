@@ -57,7 +57,7 @@ def terminal():
     os.system("urxvt &")
 
 def mail():
-    os.system("urxvt -geometry 80x40 -e bash -c 'mutt' &")
+    os.system("urxvt -geometry 80x40 -e bash -c 'neomutt' &")
 
 def web():
     os.system("qutebrowser www.reddit.com/r/france/new &")

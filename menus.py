@@ -17,7 +17,7 @@ def mainmenu():
 
 def hdmimenu():
     menudict = {
-               "0ff+2560": hdmionly,
+               "+PowerMenu": powermenu,
                "off+1920": hdmi1920,
                "1920+2560": hdmion,
                "1920+Off": hdmioff,
@@ -28,7 +28,6 @@ def hdmimenu():
 
 def powermenu():
     menudict = {
-               "WEB": mainmenu,
                "MAIL": mail,
                "pavuContr0l": pavucontrol,
                }

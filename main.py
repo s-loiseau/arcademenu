@@ -18,9 +18,8 @@ if __name__ == "__main__":
     os.environ["SDL_VIDEO_WINDOW_POS"] = "10, 10"
 
 
-    while True:
-        print("MAINMENU main loop")
-        mainmenu()
+    print("MAINMENU main loop")
+    mainmenu()
 
     pygame.quit()
     sys.exit()
