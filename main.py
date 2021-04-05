@@ -14,12 +14,13 @@ if __name__ == "__main__":
 
     pygame.init()
 
-    pygame.key.set_repeat(120,100)
     os.environ["SDL_VIDEO_WINDOW_POS"] = "10, 10"
+    pygame.key.set_repeat(120,100)
 
 
-    print("MAINMENU main loop")
-    mainmenu()
+    while True:
+        print("MAINMENU main loop")
+        mainmenu()
 
     pygame.quit()
     sys.exit()

@@ -1,4 +1,5 @@
 import pygame
+import time
 
 
 class Button:
@@ -46,6 +47,20 @@ class Button:
         self.drawpoly(self.y, self.bgcolor)
         self.drawpoly(self.y, self.bordercolor, 3)
         surf.blit(textblock, (self.x + self.padding, self.y + self.padding))
+
+    def blink(self, x):
+        print("BLINK")
+        while x > 0:
+            self.unselect()
+            self.draw()
+            time.sleep(0.02)
+            pygame.display.flip()
+            self.select()
+            self.draw()
+            time.sleep(0.02)
+            pygame.display.flip()
+            x -= 1
+
 
     def update(self):
         # change colors

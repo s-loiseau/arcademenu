@@ -123,9 +123,11 @@ class Menu:
                     self.active = False
 
                 elif e.key == pygame.K_j:
+                    self.buttons[self.index].blink(1)
                     self.next()
 
                 elif e.key == pygame.K_k:
+                    self.buttons[self.index].blink(1)
                     self.previous()
 
 
