@@ -2,15 +2,15 @@ from Menu import Menu
 import themes
 from actions import *
 from subprocess import PIPE, check_output
+import glob
 
 # MENUS
 def mainmenu():
     menudict = {
                "+AUDIOMENU": audiomenu,
                "+HDMIMENU": hdmimenu,
-               "NANI": video,
                "VIDEOS": videos,
-               "BOOKS": books,
+               "IVIDEOS": ivideo,
                "InteractiveMenu": interactivemenu,
                }
     Menu(menudict, 0, 0, "VCR.ttf", themes.theme1).run()
@@ -44,6 +44,7 @@ def audiomenu():
 
     Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
 
+
 ## INTERACTIVE MENU
 # load bookmarks
 # load files
@@ -56,11 +57,10 @@ def interactivemenu():
         print(o)
 
     #list options
-    options = ["COCO", "TITI"]
+    #options = ["COCO", "TITI"]
     # get output of a command
     options = check_output(['ls','-1'])
-    print(options)
-    options = options.decode('utf-8').split('\n')
+    options = options.decode('utf-8').split('\n')[:-1]
 
     #build menudict
     menudict = {}
@@ -69,4 +69,23 @@ def interactivemenu():
     #call menu
     Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
 
+
+def ivideo():
+    #template command
+    def command():
+        #print(o)
+        os.system('mpv ' + o + ' &')
+
+    #list options
+    # get output of a command
+    home = os.path.expanduser('~')
+    directory = os.path.join(home, 'Videos/*')
+    options = glob.glob(directory)
+
+    #build menudict
+    menudict = {}
+    for o in options:
+        menudict[o] = command
+    #call menu
+    Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
 

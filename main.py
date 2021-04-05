@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     pygame.init()
 
-    pygame.key.set_repeat(120,150)
+    pygame.key.set_repeat(120,100)
     os.environ["SDL_VIDEO_WINDOW_POS"] = "10, 10"
 
 

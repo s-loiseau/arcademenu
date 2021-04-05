@@ -38,6 +38,7 @@ class Menu:
         _, _, self.textw, self.texth = self.font.render(
             self.larger_label * "X", True, (0, 0, 0)
         ).get_rect()
+
         #print("sizeblock", self.textw, self.texth)
 
         self.w = self.textw + 2 * self.border + 2 * self.padding
@@ -106,17 +107,18 @@ class Menu:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_q:
                     print("QUIT")
+                    time.sleep(0.2)
                     pygame.quit()
                     sys.exit()
 
                 elif pygame.key.get_pressed()[pygame.K_l]:
-                    #s.play(s.effect3)
+                    s.play(s.effect3)
                     label = self.buttons[self.index].label
-                    print("ENTER",label, self.index)
                     time.sleep(0.05)
                     self.menudict[label]()
 
                 elif e.key == pygame.K_h:
+                    s.play(s.effect3)
                     time.sleep(0.05)
                     self.active = False
 
@@ -125,7 +127,6 @@ class Menu:
 
                 elif e.key == pygame.K_k:
                     self.previous()
-                print("DONE")
 
 
 
