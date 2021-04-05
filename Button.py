@@ -16,8 +16,6 @@ class Button:
         self.bgcolor = self.colors[1]
         self.bordercolor = self.colors[2]
         self.padding = padding
-        self.clock = pygame.time.Clock()
-        self.FPS = 30
 
     def select(self):
         self.selected = 1
@@ -43,7 +41,6 @@ class Button:
 
 
     def draw(self):
-        self.update()
         surf = pygame.display.get_surface()
         textblock = self.font.render(self.label, True, self.txtcolor)
         self.drawpoly(self.y, self.bgcolor)

@@ -2,13 +2,14 @@ import os
 import time
 import sys
 import pygame
-from Button import Button
+
 import sounds as s
-#from menus import mainmenu
+from Button import Button
 
 
 class Menu:
     def __init__(self, menudict, x, y, fontname, theme):
+        self.clock = pygame.time.Clock()
         maindir = os.path.dirname(__file__)
         fontdir = os.path.join(maindir, "fonts")
         self.fontname = fontname
@@ -57,6 +58,8 @@ class Menu:
 
         pygame.display.set_mode((self.w, self.h), vsync=1)
 
+        self.surf = pygame.display.get_surface()
+
         # set color of defaut selection 0
         self.buttons[self.index].select()
         self.draw()
@@ -66,16 +69,17 @@ class Menu:
         # if screen size is not good , set_mode again
         _w, _h = pygame.display.get_window_size()
 
-        if self.w != _h or self.h != _w:
+        if self.w != _w or self.h != _h:
+            print("FIX RESIZE", self.w, self.h, _w, _h)
             pygame.display.set_mode((self.w, self.h), vsync=1)
 
 
 
     def draw(self):
-        print(self.h, self.w)
-        print(pygame.display.get_window_size())
-        surf = pygame.display.get_surface()
-        surf.fill((0,0,0))
+        self.surf = pygame.display.get_surface()
+        self.fixwindowsize()
+
+        self.surf.fill((0,0,0))
         for b in self.buttons:
             b.draw()
         pygame.display.flip()
@@ -94,19 +98,7 @@ class Menu:
         self.buttons[self.index].unselect()
         self.index = self.index + direction
         self.buttons[self.index].select()
-        self.draw()
 
-    def enter(self):
-        label = self.buttons[self.index].label
-        action = self.menudict[label]
-        action()
-        self.draw()
-
-    def back(self):
-        #s.play(s.effect3)
-        self.active = False
-        #self.update()
-        pass
 
 
     def update(self):
@@ -116,16 +108,29 @@ class Menu:
                     print("QUIT")
                     pygame.quit()
                     sys.exit()
-                if e.key == pygame.K_l:
-                    self.enter()
-                if e.key == pygame.K_h:
-                    self.back()
-                    self.fixwindowsize()
-                if e.key == pygame.K_j:
+
+                elif pygame.key.get_pressed()[pygame.K_l]:
+                    #s.play(s.effect3)
+                    label = self.buttons[self.index].label
+                    print("ENTER",label, self.index)
+                    time.sleep(0.05)
+                    self.menudict[label]()
+
+                elif e.key == pygame.K_h:
+                    time.sleep(0.01)
+                    self.active = False
+
+                elif e.key == pygame.K_j:
                     self.next()
-                if e.key == pygame.K_k:
+
+                elif e.key == pygame.K_k:
                     self.previous()
+                print("DONE")
+
+
 
     def run(self):
         while self.active:
+            self.clock.tick(30)
             self.update()
+            self.draw()

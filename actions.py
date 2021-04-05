@@ -25,13 +25,13 @@ def pavucontrol():
     os.system("pavucontrol &")
 
 def volumeup():
-    os.system("setvolume.sh increase")
+    os.system("setvolume.sh increase &")
 
 def volumedown():
-    os.system("setvolume.sh decrease")
+    os.system("setvolume.sh decrease &")
 
 def mute():
-    os.system("setvolume.sh mute")
+    os.system("setvolume.sh mute &")
 
 
 ## VIDEO
@@ -55,8 +55,10 @@ def hdmi1920():
 ## APPS
 def terminal():
     os.system("urxvt &")
+
 def mail():
     os.system("urxvt -geometry 80x40 -e bash -c 'mutt' &")
+
 def web():
     os.system("qutebrowser www.reddit.com/r/france/new &")
 
