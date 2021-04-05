@@ -1,6 +1,7 @@
 from Menu import Menu
 import themes
 from actions import *
+from subprocess import PIPE, check_output
 
 # MENUS
 def mainmenu():
@@ -10,7 +11,7 @@ def mainmenu():
                "NANI": video,
                "VIDEOS": videos,
                "BOOKS": books,
-               "MANGAS": mangas,
+               "InteractiveMenu": interactivemenu,
                }
     Menu(menudict, 0, 0, "VCR.ttf", themes.theme1).run()
 
@@ -29,15 +30,12 @@ def hdmimenu():
 def powermenu():
     menudict = {
                "MAIL": mail,
-               "pavuContr0l": pavucontrol,
                }
     Menu(menudict, 0, 0, "VCR.ttf", themes.theme1).run()
 
 
 def audiomenu():
     menudict = {
-               "HDMIOUT": audiohdmi,
-               "SPEADKEROUT": audiospeaker,
                "UP": volumeup,
                "DOWN": volumedown,
                "MUTE": mute,
@@ -45,3 +43,30 @@ def audiomenu():
                }
 
     Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
+
+## INTERACTIVE MENU
+# load bookmarks
+# load files
+# change audio output
+# change video output
+
+def interactivemenu():
+    #template command
+    def command():
+        print(o)
+
+    #list options
+    options = ["COCO", "TITI"]
+    # get output of a command
+    options = check_output(['ls','-1'])
+    print(options)
+    options = options.decode('utf-8').split('\n')
+
+    #build menudict
+    menudict = {}
+    for o in options:
+        menudict[o] = command
+    #call menu
+    Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
+
+
