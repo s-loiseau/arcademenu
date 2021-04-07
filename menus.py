@@ -3,6 +3,7 @@ import themes
 from actions import *
 from subprocess import PIPE, check_output
 import glob
+import shlex
 
 # MENUS
 def mainmenu():
@@ -52,40 +53,34 @@ def audiomenu():
 # change video output
 
 def interactivemenu():
-    #template command
-    def command():
-        print(o)
+    def getoptions():
+        options = check_output(['ls','-1'])
+        options = options.decode('utf-8').split('\n')[:-1]
+        return options
 
-    #list options
-    #options = ["COCO", "TITI"]
-    # get output of a command
-    options = check_output(['ls','-1'])
-    options = options.decode('utf-8').split('\n')[:-1]
+    def command(arg):
+        os.system(f"echo {arg} >> logs.txt")
 
-    #build menudict
     menudict = {}
-    for o in options:
-        menudict[o] = command
-    #call menu
-    Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
+    for o in getoptions():
+        menudict[o] = (command, o)
+
+    Menu(menudict, 0, 0, "VCR.ttf", themes.pinky).run()
 
 
 def ivideo():
-    #template command
-    def command():
-        #print(o)
-        os.system('mpv ' + o + ' &')
+    def getoptions():
+        home = os.path.expanduser('~')
+        directory = os.path.join(home, 'Videos' , '*')
+        options = glob.glob(directory)
+        return options
 
-    #list options
-    # get output of a command
-    home = os.path.expanduser('~')
-    directory = os.path.join(home, 'Videos/*')
-    options = glob.glob(directory)
+    def command(arg):
+        os.system(f"mpv '{arg}' &")
 
-    #build menudict
     menudict = {}
-    for o in options:
-        menudict[o] = command
-    #call menu
-    Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
+    for o in getoptions():
+        menudict[o] = (command, o)
+
+    Menu(menudict, 0, 0, "VCR.ttf", themes.banana).run()
 

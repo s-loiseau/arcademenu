@@ -115,7 +115,14 @@ class Menu:
                     s.play(s.effect3)
                     label = self.buttons[self.index].label
                     time.sleep(0.05)
-                    self.menudict[label]()
+
+                    print(type(self.menudict[label]))
+                    print(self.menudict[label])
+
+                    if type(self.menudict[label]) == tuple:
+                        self.menudict[label][0](self.menudict[label][1])
+                    else:
+                        self.menudict[label]()
 
                 elif e.key == pygame.K_h:
                     s.play(s.effect3)
@@ -123,11 +130,11 @@ class Menu:
                     self.active = False
 
                 elif e.key == pygame.K_j:
-                    self.buttons[self.index].blink(1)
+                    self.buttons[self.index].blink(3)
                     self.next()
 
                 elif e.key == pygame.K_k:
-                    self.buttons[self.index].blink(1)
+                    self.buttons[self.index].blink(2)
                     self.previous()
 
 

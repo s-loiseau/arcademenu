@@ -53,11 +53,11 @@ class Button:
         while x > 0:
             self.unselect()
             self.draw()
-            time.sleep(0.02)
+            time.sleep(0.01)
             pygame.display.flip()
             self.select()
             self.draw()
-            time.sleep(0.02)
+            time.sleep(0.01)
             pygame.display.flip()
             x -= 1
 
