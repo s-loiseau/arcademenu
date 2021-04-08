@@ -4,6 +4,7 @@ import time
 
 class Button:
     def __init__(self, label, x, y, padding, theme, font, menuw, menuh):
+        self.surf = pygame.display.get_surface()
         self.selected = 0
         self.w = menuw
         self.h = menuh

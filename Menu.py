@@ -102,45 +102,38 @@ class Menu:
 
 
 
-    def update(self):
-        for e in pygame.event.get():
-            if e.type == pygame.KEYDOWN:
-                if e.key == pygame.K_q:
-                    print("QUIT")
-                    time.sleep(0.2)
-                    pygame.quit()
-                    sys.exit()
+    def update(self,event):
+        e = event
+        if e.type == pygame.KEYDOWN:
+            if e.key == pygame.K_q:
+                print("QUIT")
+                time.sleep(0.2)
+                pygame.quit()
+                sys.exit()
 
-                elif pygame.key.get_pressed()[pygame.K_l]:
-                    s.play(s.effect3)
-                    label = self.buttons[self.index].label
-                    time.sleep(0.05)
+            elif pygame.key.get_pressed()[pygame.K_l]:
+                s.play(s.effect3)
+                label = self.buttons[self.index].label
+                time.sleep(0.05)
 
-                    print(type(self.menudict[label]))
-                    print(self.menudict[label])
+                print(type(self.menudict[label]))
+                print(self.menudict[label])
 
-                    if type(self.menudict[label]) == tuple:
-                        self.menudict[label][0](self.menudict[label][1])
-                    else:
-                        self.menudict[label]()
+                if type(self.menudict[label]) == tuple:
+                    self.menudict[label][0](self.menudict[label][1])
+                else:
+                    self.menudict[label]()
 
-                elif e.key == pygame.K_h:
-                    s.play(s.effect3)
-                    time.sleep(0.05)
-                    self.active = False
+            elif e.key == pygame.K_h:
+                s.play(s.effect3)
+                time.sleep(0.05)
+                self.active = False
 
-                elif e.key == pygame.K_j:
-                    self.buttons[self.index].blink(3)
-                    self.next()
+            elif e.key == pygame.K_j:
+                self.buttons[self.index].blink(3)
+                self.next()
 
-                elif e.key == pygame.K_k:
-                    self.buttons[self.index].blink(2)
-                    self.previous()
+            elif e.key == pygame.K_k:
+                self.buttons[self.index].blink(2)
+                self.previous()
 
-
-
-    def run(self):
-        while self.active:
-            self.clock.tick(30)
-            self.update()
-            self.draw()

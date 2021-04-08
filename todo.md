@@ -1,3 +1,7 @@
+## ONE MAIN LOOP
+State management
+
+
 # Textwrap
 ## for Popup, handle long text with textwrap module.
 # Menus dynamic

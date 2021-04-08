@@ -2,7 +2,7 @@
 import pygame
 import os
 import sys
-from menus import mainmenu
+from menus import *
 
 
 if __name__ == "__main__":
@@ -15,12 +15,22 @@ if __name__ == "__main__":
     pygame.init()
 
     os.environ["SDL_VIDEO_WINDOW_POS"] = "10, 10"
+
     pygame.key.set_repeat(120,100)
 
+    gamedict = {'mainmenu':mainmenu(),
+                'powermenu':powermenu()}
+
+    clock = pygame.time.Clock()
+    
+    activescreen = 'mainmenu'
 
     while True:
-        print("MAINMENU main loop")
-        mainmenu()
+        clock.tick(60)
+        ecran = gamedict[activescreen]
+        for e in pygame.event.get():
+            ecran.update(e)
+        ecran.draw()
 
     pygame.quit()
     sys.exit()

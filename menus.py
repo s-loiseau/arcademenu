@@ -13,7 +13,7 @@ def mainmenu():
                "IVIDEOS": ivideo,
                "InteractiveMenu": interactivemenu,
                }
-    Menu(menudict, 0, 0, "VCR.ttf", themes.banana).run()
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.banana)
 
 
 def hdmimenu():
@@ -24,14 +24,14 @@ def hdmimenu():
                "1920+Off": hdmioff,
                }
 
-    Menu(menudict, 0, 0, "VCR.ttf", themes.black).run()
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.black)
 
 
 def powermenu():
     menudict = {
                "MAIL": mail,
                }
-    Menu(menudict, 0, 0, "VCR.ttf", themes.theme1).run()
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.theme1)
 
 
 def audiomenu():
@@ -42,7 +42,7 @@ def audiomenu():
                "PAVUCONTROL": pavucontrol,
                }
 
-    Menu(menudict, 0, 0, "VCR.ttf", themes.winky).run()
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.winky)
 
 
 ## INTERACTIVE MENU
