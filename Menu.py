@@ -59,9 +59,6 @@ class Menu:
 
         pygame.display.set_mode((self.w, self.h), vsync=1)
 
-        self.surf = pygame.display.get_surface()
-
-        # set color of defaut selection 0
         self.buttons[self.index].select()
         self.draw()
 
@@ -77,10 +74,8 @@ class Menu:
 
 
     def draw(self):
-        self.surf = pygame.display.get_surface()
         self.fixwindowsize()
 
-        self.surf.fill((0,0,0))
         for b in self.buttons:
             b.draw()
         pygame.display.flip()
@@ -107,26 +102,14 @@ class Menu:
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_q:
                 print("QUIT")
-                time.sleep(0.2)
                 pygame.quit()
                 sys.exit()
 
             elif pygame.key.get_pressed()[pygame.K_l]:
                 s.play(s.effect3)
-                label = self.buttons[self.index].label
-                time.sleep(0.05)
-
-                print(type(self.menudict[label]))
-                print(self.menudict[label])
-
-                if type(self.menudict[label]) == tuple:
-                    self.menudict[label][0](self.menudict[label][1])
-                else:
-                    self.menudict[label]()
 
             elif e.key == pygame.K_h:
                 s.play(s.effect3)
-                time.sleep(0.05)
                 self.active = False
 
             elif e.key == pygame.K_j:

@@ -8,12 +8,12 @@ import shlex
 # MENUS
 def mainmenu():
     menudict = {
-               "+AUDIOMENU": audiomenu,
+               "+AUDIOMENU": 'audiomenu',
                "+HDMIMENU": hdmimenu,
                "IVIDEOS": ivideo,
                "InteractiveMenu": interactivemenu,
                }
-    return Menu(menudict, 0, 0, "VCR.ttf", themes.banana)
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.pinky)
 
 
 def hdmimenu():

@@ -25,11 +25,22 @@ if __name__ == "__main__":
     
     activescreen = 'mainmenu'
 
-    while True:
+    surf = pygame.display.get_surface()
+
+    done = False
+    while not done:
         clock.tick(60)
         ecran = gamedict[activescreen]
-        for e in pygame.event.get():
-            ecran.update(e)
+
+        #EVENTS
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
+            ecran.update(event)
+
+
+        #DRAW
+        surf.fill((0,0,0))
         ecran.draw()
 
     pygame.quit()
