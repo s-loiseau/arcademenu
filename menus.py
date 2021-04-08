@@ -10,11 +10,10 @@ def mainmenu():
     menudict = {
                "+AUDIOMENU": audiomenu,
                "+HDMIMENU": hdmimenu,
-               "VIDEOS": videos,
                "IVIDEOS": ivideo,
                "InteractiveMenu": interactivemenu,
                }
-    Menu(menudict, 0, 0, "VCR.ttf", themes.theme1).run()
+    Menu(menudict, 0, 0, "VCR.ttf", themes.banana).run()
 
 
 def hdmimenu():
@@ -25,7 +24,7 @@ def hdmimenu():
                "1920+Off": hdmioff,
                }
 
-    Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
+    Menu(menudict, 0, 0, "VCR.ttf", themes.black).run()
 
 
 def powermenu():
@@ -43,7 +42,7 @@ def audiomenu():
                "PAVUCONTROL": pavucontrol,
                }
 
-    Menu(menudict, 0, 0, "VCR.ttf", themes.theme2).run()
+    Menu(menudict, 0, 0, "VCR.ttf", themes.winky).run()
 
 
 ## INTERACTIVE MENU

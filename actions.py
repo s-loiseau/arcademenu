@@ -3,17 +3,6 @@ import subprocess
 
 # ACTIONS
 
-## ROFI MENUS
-def mangas():
-    os.system("showb.py &")
-
-def videos():
-    os.system("showv.py &")
-
-def books():
-    os.system("showb.py &")
-
-
 ## AUDIO
 def audiohdmi():
     os.system("pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo")

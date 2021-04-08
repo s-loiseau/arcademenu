@@ -4,6 +4,7 @@ black = (0, 0, 0)
 red = (255, 0, 0)
 dred = (180, 0, 0)
 pink = (255, 0, 255)
+pink2 = (215, 0, 215)
 cyan = (0, 225, 255)
 green = (0, 255, 0)
 dgreen = (0, 200, 0)
@@ -23,10 +24,14 @@ theme1 = [
         ]
 
 pinky = [
-        [red, dred, red],
-        [cyan, red, pink]
+        [red, pink2, pink],
+        [cyan, red, pink2]
         ]
 
+winky = [
+        [red, pink, red],
+        [cyan, red, pink]
+        ]
 
 black = [
         [black, grey, grey],
