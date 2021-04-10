@@ -80,17 +80,31 @@ class Menu:
     def next(self):
         if self.index < len(self.buttons) - 1:
             self.move(1)
+            checky = self.buttons[self.index].y
+            increment = 58
+            if checky >= 600:
+                print(checky, self.index)
+                for b in self.buttons:
+                    b.y -= increment
 
     def previous(self):
         if self.index > 0:
             self.move(-1)
+            checky = self.buttons[self.index].y
+            increment = 58
+            if checky < 0:
+                print(checky, self.index)
+                for b in self.buttons:
+                    b.y += increment
 
     def move(self,direction):
         s.play(s.effect1)
         self.buttons[self.index].unselect()
         self.index = self.index + direction
         self.buttons[self.index].select()
-        print(self.buttons[self.index].y)
+
+
+
 
     def update(self,event):
         e = event
