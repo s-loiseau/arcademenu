@@ -90,6 +90,7 @@ class Menu:
         self.buttons[self.index].unselect()
         self.index = self.index + direction
         self.buttons[self.index].select()
+        print(self.buttons[self.index].y)
 
     def update(self,event):
         e = event
@@ -115,6 +116,7 @@ class Menu:
                 elif callable(action):
                     action()
                 else:
+                    time.sleep(0.05)
                     return action
 
             elif e.key == pygame.K_h:
