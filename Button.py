@@ -4,7 +4,6 @@ import time
 
 class Button:
     def __init__(self, label, x, y, padding, theme, font, menuw, menuh):
-        self.surf = pygame.display.get_surface()
         self.selected = 0
         self.w = menuw
         self.h = menuh
@@ -27,8 +26,8 @@ class Button:
         self.selected = 0
         self.update()
 
-    def drawpoly(self, y, color, width=0):
-        surf = pygame.display.get_surface()
+    def drawpoly(self, surf, y, color, width=0):
+        #surf = pygame.display.get_surface()
         _w = self.w - 2 * self.x
         _h = 2 * self.padding + 30
         corner = 15
@@ -44,8 +43,8 @@ class Button:
     def draw(self):
         surf = pygame.display.get_surface()
         textblock = self.font.render(self.label, True, self.txtcolor)
-        self.drawpoly(self.y, self.bgcolor)
-        self.drawpoly(self.y, self.bordercolor, 3)
+        self.drawpoly(surf, self.y, self.bgcolor)
+        self.drawpoly(surf, self.y, self.bordercolor, 3)
         surf.blit(textblock, (self.x + self.padding, self.y + self.padding))
 
     def update(self):
