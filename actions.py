@@ -18,6 +18,14 @@ def mute():
 
 
 ## VIDEO
+def hdmi1920():
+    os.system('xrandr --output HDMI-0 --mode 1920x1080 &')
+    #os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
+
+def hdmi2560():
+    os.system('xrandr --output HDMI-0 --mode 2560x1080 &')
+    #os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
+
 def hdmionly():
     os.system("~/.screenlayout/onlyhdmi2560.sh")
     os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
@@ -34,6 +42,7 @@ def hdmioff():
 def hdmi1920():
     os.system("~/.screenlayout/onlyhdmi19.sh")
     os.system("feh --randomize --bg-fill ~/Pictures/wallpaper/*")
+
 
 ## APPS
 def terminal():

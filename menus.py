@@ -13,25 +13,25 @@ def mainmenu():
                "IVIDEOS": 'ivideo',
                "InteractiveMenu": 'interactivemenu',
                }
-    return Menu(menudict, 0, 0, "VCR.ttf", themes.pinky)
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.termgreen)
 
 
 def hdmimenu():
     menudict = {
                "+PowerMenu": 'powermenu',
-               "off+1920": 'hdmi1920',
-               "1920+2560": 'hdmion',
-               "1920+Off": 'hdmioff',
+               "2560": hdmi2560,
+               "1920": hdmi1920,
+               "terminal": terminal
                }
 
-    return Menu(menudict, 0, 0, "VCR.ttf", themes.black)
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.banana1)
 
 
 def powermenu():
     menudict = {
-               "MAIL": 'mail',
+               "MAIL": mail,
                }
-    return Menu(menudict, 0, 0, "VCR.ttf", themes.theme1)
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.black)
 
 
 def audiomenu():
