@@ -4,12 +4,6 @@ import subprocess
 # ACTIONS
 
 ## AUDIO
-def audiohdmi():
-    os.system("pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo")
-
-def audiospeaker():
-    os.system("pactl set-card-profile 0 output:analog-stereo+input:analog-stereo")
-
 def pavucontrol():
     os.system("pavucontrol &")
 

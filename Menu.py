@@ -30,6 +30,7 @@ class Menu:
         self.interbutton = 10
 
         self.larger_label = max([len(x) for x in self.menudict.keys()])
+
         # GUESS DIMENSIONS FONT :
         self.font = pygame.font.Font(
             os.path.join(fontdir, self.fontname), self.fontsize
@@ -78,7 +79,6 @@ class Menu:
 
         for b in self.buttons:
             b.draw()
-        pygame.display.flip()
 
 
     def next(self):
@@ -106,17 +106,21 @@ class Menu:
                 sys.exit()
 
             elif pygame.key.get_pressed()[pygame.K_l]:
-                s.play(s.effect3)
+                #self.buttons[self.index].blink(3)
+                #s.play(s.effect3)
+                print( self.buttons[self.index].label)
+                return 'powermenu'
 
             elif e.key == pygame.K_h:
-                s.play(s.effect3)
+                #s.play(s.effect3)
                 self.active = False
+                return 'mainmenu'
 
             elif e.key == pygame.K_j:
-                self.buttons[self.index].blink(3)
+                #self.buttons[self.index].blink(3)
                 self.next()
 
             elif e.key == pygame.K_k:
-                self.buttons[self.index].blink(2)
+                #self.buttons[self.index].blink(2)
                 self.previous()
 

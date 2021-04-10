@@ -18,30 +18,36 @@ if __name__ == "__main__":
 
     pygame.key.set_repeat(120,100)
 
-    gamedict = {'mainmenu':mainmenu(),
-                'powermenu':powermenu()}
 
     clock = pygame.time.Clock()
     
     activescreen = 'mainmenu'
 
+    gamedict = {'mainmenu':mainmenu(),
+                'powermenu':powermenu()}
+
     surf = pygame.display.get_surface()
 
     done = False
+    ecran = gamedict[activescreen]
     while not done:
-        clock.tick(60)
-        ecran = gamedict[activescreen]
+        clock.tick(20)
 
         #EVENTS
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-            ecran.update(event)
+            activescreen = ecran.update(event)
+            if activescreen:
+                print(activescreen, "receive, should load it")
+                ecran = gamedict[activescreen]
 
 
         #DRAW
         surf.fill((0,0,0))
         ecran.draw()
+
+        pygame.display.flip()
 
     pygame.quit()
     sys.exit()

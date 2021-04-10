@@ -50,7 +50,7 @@ class Button:
         surf.blit(textblock, (self.x + self.padding, self.y + self.padding))
 
     def blink(self, x):
-        print("BLINK")
+        #print("BLINK")
         while x > 0:
             self.unselect()
             self.draw()
