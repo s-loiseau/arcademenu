@@ -9,19 +9,19 @@ import shlex
 def mainmenu():
     menudict = {
                "+AUDIOMENU": 'audiomenu',
-               "+HDMIMENU": hdmimenu,
-               "IVIDEOS": ivideo,
-               "InteractiveMenu": interactivemenu,
+               "+HDMIMENU": 'hdmimenu',
+               "IVIDEOS": 'ivideo',
+               "InteractiveMenu": 'interactivemenu',
                }
     return Menu(menudict, 0, 0, "VCR.ttf", themes.pinky)
 
 
 def hdmimenu():
     menudict = {
-               "+PowerMenu": powermenu,
-               "off+1920": hdmi1920,
-               "1920+2560": hdmion,
-               "1920+Off": hdmioff,
+               "+PowerMenu": 'powermenu',
+               "off+1920": 'hdmi1920',
+               "1920+2560": 'hdmion',
+               "1920+Off": 'hdmioff',
                }
 
     return Menu(menudict, 0, 0, "VCR.ttf", themes.black)
@@ -29,7 +29,7 @@ def hdmimenu():
 
 def powermenu():
     menudict = {
-               "MAIL": mail,
+               "MAIL": 'mail',
                }
     return Menu(menudict, 0, 0, "VCR.ttf", themes.theme1)
 
@@ -59,12 +59,13 @@ def interactivemenu():
 
     def command(arg):
         os.system(f"echo {arg} >> logs.txt")
+        return None
 
     menudict = {}
     for o in getoptions():
         menudict[o] = (command, o)
 
-    Menu(menudict, 0, 0, "VCR.ttf", themes.pinky).run()
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.winky)
 
 
 def ivideo():
@@ -81,5 +82,5 @@ def ivideo():
     for o in getoptions():
         menudict[o] = (command, o)
 
-    Menu(menudict, 0, 0, "VCR.ttf", themes.banana).run()
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.banana)
 

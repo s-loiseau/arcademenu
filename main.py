@@ -24,7 +24,12 @@ if __name__ == "__main__":
     activescreen = 'mainmenu'
 
     gamedict = {'mainmenu':mainmenu(),
-                'powermenu':powermenu()}
+                'powermenu':powermenu(), 
+                'interactivemenu':interactivemenu(),
+                'audiomenu':audiomenu(),
+                'hdmimenu':hdmimenu(),
+                'ivideo':ivideo()
+               }
 
     surf = pygame.display.get_surface()
 

@@ -63,7 +63,6 @@ class Menu:
         self.buttons[self.index].select()
         self.draw()
 
-
     def fixwindowsize(self):
         # if screen size is not good , set_mode again
         _w, _h = pygame.display.get_window_size()
@@ -72,14 +71,11 @@ class Menu:
             print("FIX RESIZE", self.w, self.h, _w, _h)
             pygame.display.set_mode((self.w, self.h), vsync=1)
 
-
-
     def draw(self):
         self.fixwindowsize()
 
         for b in self.buttons:
             b.draw()
-
 
     def next(self):
         if self.index < len(self.buttons) - 1:
@@ -95,8 +91,6 @@ class Menu:
         self.index = self.index + direction
         self.buttons[self.index].select()
 
-
-
     def update(self,event):
         e = event
         if e.type == pygame.KEYDOWN:
@@ -106,21 +100,30 @@ class Menu:
                 sys.exit()
 
             elif pygame.key.get_pressed()[pygame.K_l]:
-                #self.buttons[self.index].blink(3)
-                #s.play(s.effect3)
-                print( self.buttons[self.index].label)
-                return 'powermenu'
+                s.play(s.effect3)
+
+
+                label = self.buttons[self.index].label
+                action = self.menudict[label]
+
+                print(type(action), label)
+
+                if isinstance(action,tuple):
+                    print("ACTION", action)
+                    action[0](action[1])
+                    return None
+                elif callable(action):
+                    action()
+                else:
+                    return action
 
             elif e.key == pygame.K_h:
-                #s.play(s.effect3)
+                s.play(s.effect3)
                 self.active = False
                 return 'mainmenu'
 
             elif e.key == pygame.K_j:
-                #self.buttons[self.index].blink(3)
                 self.next()
 
             elif e.key == pygame.K_k:
-                #self.buttons[self.index].blink(2)
                 self.previous()
-
