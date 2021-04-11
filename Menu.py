@@ -15,7 +15,7 @@ class Menu:
         self.fontname = fontname
         self.theme = theme
 
-        self.fontsize = 30
+        self.fontsize = 20
 
         self.active = True
 
@@ -135,7 +135,6 @@ class Menu:
                 elif callable(action):
                     action()
                 else:
-                    time.sleep(0.05)
                     return action
 
             elif e.key == pygame.K_h:

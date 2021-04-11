@@ -14,13 +14,12 @@ if __name__ == "__main__":
 
     pygame.init()
 
-    os.environ["SDL_VIDEO_WINDOW_POS"] = "10, 10"
+    os.environ["SDL_VIDEO_WINDOW_POS"] = "1, 1"
 
     pygame.key.set_repeat(120,100)
 
-
     clock = pygame.time.Clock()
-    
+
     activescreen = 'mainmenu'
 
     gamedict = {'mainmenu':mainmenu(),
@@ -44,6 +43,8 @@ if __name__ == "__main__":
                 done = True
             activescreen = ecran.update(event)
             if activescreen:
+                # slow down to avoid multiple actions too quickly.
+                pygame.time.wait(100)
                 print(activescreen, "receive, should load it")
                 ecran = gamedict[activescreen]
 
