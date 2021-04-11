@@ -13,7 +13,8 @@ def mainmenu():
                "IVIDEOS": 'ivideo',
                "InteractiveMenu": 'interactivemenu',
                }
-    return Menu(menudict, 0, 0, "VCR.ttf", themes.termgreen)
+    #return Menu(menudict, 0, 0, "VCR.ttf", themes.termgreen)
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.miami)
 
 
 def hdmimenu():

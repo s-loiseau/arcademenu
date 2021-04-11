@@ -15,7 +15,7 @@ class Menu:
         self.fontname = fontname
         self.theme = theme
 
-        self.fontsize = 20
+        self.fontsize = 30
 
         self.active = True
 
@@ -40,8 +40,6 @@ class Menu:
             self.larger_label * "X", True, (0, 0, 0)
         ).get_rect()
 
-        #print("sizeblock", self.textw, self.texth)
-
         self.w = self.textw + 2 * self.border + 2 * self.padding
         self.h = (
             (2 * self.border)
@@ -57,13 +55,11 @@ class Menu:
             self.buttons.append(
                 Button(k, bx, by, self.padding, self.theme, self.font, self.w, self.h)
             )
-            #by += self.padding * 2 + self.texth + self.interbutton
             by += self.intervalbutton
 
         pygame.display.set_mode((self.w, self.h), vsync=1)
 
         self.buttons[self.index].select()
-        self.draw()
 
     def fixwindowsize(self):
         # if screen size is not good , set_mode again
@@ -107,9 +103,6 @@ class Menu:
         self.buttons[self.index].unselect()
         self.index = self.index + direction
         self.buttons[self.index].select()
-
-
-
 
     def update(self,event):
         e = event

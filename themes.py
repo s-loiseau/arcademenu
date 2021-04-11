@@ -11,6 +11,7 @@ pink = (255, 0, 255)
 pink2 = (215, 0, 215)
 
 cyan = (0, 225, 255)
+cyan2 = (0, 255, 255)
 
 green = (0, 255, 0)
 dgreen = (0, 200, 0)
@@ -22,7 +23,12 @@ dyellow = (100, 100, 0)
 # theme[1] active button
 
 termgreen = [
-        [green, dgreen, black],
+        [green, dgreen, cyan2],
+        [white, green, grey],
+        ]
+
+miami = [
+        [pink, cyan, cyan2],
         [white, green, grey],
         ]
 
