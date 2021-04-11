@@ -72,16 +72,19 @@ def interactivemenu():
 def ivideo():
     def getoptions():
         home = os.path.expanduser('~')
-        directory = os.path.join(home, 'Videos' , '*')
-        options = glob.glob(directory)
-        return options
+        directory = os.path.join(home, 'Videos' , '**')
+        options = glob.glob(directory, recursive=True)
+        options = [o for o in options if o.endswith(('.mp4','.mkv'))]
+        return sorted(options)
 
     def command(arg):
-        os.system(f"mpv '{arg}' &")
+        os.system(f"mpv --geometry=30% '{arg}' &")
 
     menudict = {}
+    print(getoptions())
     for o in getoptions():
-        menudict[o] = (command, o)
+        label = o.split(os.path.sep)[-1]
+        menudict[label] = (command, o)
 
     return Menu(menudict, 0, 0, "VCR.ttf", themes.banana)
 

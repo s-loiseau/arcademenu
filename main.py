@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     os.environ["SDL_VIDEO_WINDOW_POS"] = "1, 1"
 
-    pygame.key.set_repeat(120,100)
+    pygame.key.set_repeat(120,60)
 
     clock = pygame.time.Clock()
 
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     done = False
     ecran = gamedict[activescreen]
     while not done:
-        clock.tick(20)
+        clock.tick(60)
 
         #EVENTS
         for event in pygame.event.get():

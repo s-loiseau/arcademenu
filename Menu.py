@@ -57,6 +57,9 @@ class Menu:
             )
             by += self.intervalbutton
 
+        self.maxh = 1000
+        if self.h > self.maxh:
+            self.h = self.maxh
         pygame.display.set_mode((self.w, self.h), vsync=1)
 
         self.buttons[self.index].select()
@@ -64,6 +67,8 @@ class Menu:
     def fixwindowsize(self):
         # if screen size is not good , set_mode again
         _w, _h = pygame.display.get_window_size()
+        if self.h > self.maxh:
+            self.h = self.maxh
 
         if self.w != _w or self.h != _h:
             print("FIX RESIZE", self.w, self.h, _w, _h)
@@ -82,7 +87,7 @@ class Menu:
             increment = self.intervalbutton
             _w, _h = pygame.display.get_window_size()
             screenh = pygame.display.get_desktop_sizes()[0][1]
-            if checky >= screenh - self.intervalbutton:
+            if checky >= screenh - 2 * self.intervalbutton:
                 print(checky, self.index)
                 for b in self.buttons:
                     b.y -= self.intervalbutton
