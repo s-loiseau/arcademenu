@@ -52,11 +52,13 @@ class Menu:
 
         self.buttons = []
         bx, by = self.border, self.border
+        self.intervalbutton = self.padding * 2 + self.texth + self.interbutton
         for k in self.menudict.keys():
             self.buttons.append(
                 Button(k, bx, by, self.padding, self.theme, self.font, self.w, self.h)
             )
-            by += self.padding * 2 + self.texth + self.interbutton
+            #by += self.padding * 2 + self.texth + self.interbutton
+            by += self.intervalbutton
 
         pygame.display.set_mode((self.w, self.h), vsync=1)
 
@@ -81,21 +83,24 @@ class Menu:
         if self.index < len(self.buttons) - 1:
             self.move(1)
             checky = self.buttons[self.index].y
-            increment = 58
-            if checky >= 600:
+            increment = self.intervalbutton
+            _w, _h = pygame.display.get_window_size()
+            screenh = pygame.display.get_desktop_sizes()[0][1]
+            if checky >= screenh - self.intervalbutton:
                 print(checky, self.index)
                 for b in self.buttons:
-                    b.y -= increment
+                    b.y -= self.intervalbutton
 
     def previous(self):
         if self.index > 0:
             self.move(-1)
             checky = self.buttons[self.index].y
-            increment = 58
+            #increment = 58
+            increment = self.intervalbutton
             if checky < 0:
                 print(checky, self.index)
                 for b in self.buttons:
-                    b.y += increment
+                    b.y += self.intervalbutton
 
     def move(self,direction):
         s.play(s.effect1)
