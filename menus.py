@@ -32,7 +32,7 @@ def powermenu():
     menudict = {
                "MAIL": mail,
                }
-    return Menu(menudict, 0, 0, "VCR.ttf", themes.black)
+    return Menu(menudict, 0, 0, "VCR.ttf", themes.black, 'hdmimenu')
 
 
 def audiomenu():

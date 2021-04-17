@@ -8,10 +8,11 @@ from Button import Button
 
 
 class Menu:
-    def __init__(self, menudict, x, y, fontname, theme):
+    def __init__(self, menudict, x, y, fontname, theme, back='mainmenu'):
         self.clock = pygame.time.Clock()
         maindir = os.path.dirname(__file__)
         fontdir = os.path.join(maindir, "fonts")
+        self.back = back
         self.fontname = fontname
         self.theme = theme
 
@@ -22,6 +23,7 @@ class Menu:
         self.index = 0
 
         self.menudict = menudict
+        self.nbbuttons = len(self.menudict.keys())
         self.x = x
         self.y = y
 
@@ -43,8 +45,8 @@ class Menu:
         self.w = self.textw + 2 * self.border + 2 * self.padding
         self.h = (
             (2 * self.border)
-            + (len(self.menudict.keys()) * (self.texth + 2 * self.padding))
-            + ((len(self.menudict.keys()) - 1) * self.interbutton)
+            + (self.nbbuttons * (self.texth + 2 * self.padding))
+            + ((self.nbbuttons - 1) * self.interbutton)
             + self.border
         )
 
@@ -57,10 +59,10 @@ class Menu:
             )
             by += self.intervalbutton
 
-        self.maxh = 1000
+        self.maxh = 1026
         if self.h > self.maxh:
             self.h = self.maxh
-        pygame.display.set_mode((self.w, self.h), vsync=1)
+        #pygame.display.set_mode((self.w, self.h), vsync=1)
 
         self.buttons[self.index].select()
 
@@ -87,10 +89,12 @@ class Menu:
             increment = self.intervalbutton
             _w, _h = pygame.display.get_window_size()
             screenh = pygame.display.get_desktop_sizes()[0][1]
-            if checky >= screenh - 2 * self.intervalbutton:
-                print(checky, self.index)
-                for b in self.buttons:
-                    b.y -= self.intervalbutton
+
+            if self.index < len(self.buttons) - 1:
+                if checky >= screenh - 2 * self.intervalbutton:
+                    print(checky, self.index)
+                    for b in self.buttons:
+                        b.y -= self.intervalbutton
 
     def previous(self):
         if self.index > 0:
@@ -138,7 +142,7 @@ class Menu:
             elif e.key == pygame.K_h:
                 s.play(s.effect3)
                 self.active = False
-                return 'mainmenu'
+                return self.back 
 
             elif e.key == pygame.K_j:
                 self.next()

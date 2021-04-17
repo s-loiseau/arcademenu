@@ -21,6 +21,7 @@ dyellow = (100, 100, 0)
 
 # theme[0] inactive button
 # theme[1] active button
+# font, background, border
 
 termgreen = [
         [green, dgreen, cyan2],
@@ -29,7 +30,7 @@ termgreen = [
 
 miami = [
         [pink, cyan, cyan2],
-        [white, green, grey],
+        [white, cyan2, cyan],
         ]
 
 banana = [
