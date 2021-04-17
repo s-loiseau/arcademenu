@@ -6,11 +6,11 @@ import menus as m
 
 
 if __name__ == "__main__":
-    try:
-        pygame.mixer.pre_init(48000, -16, 2, 256)
-    except:
-        nosound = True
-        pass
+    #try:
+        #pygame.mixer.pre_init(48000, -16, 2, 256)
+    #except:
+        #nosound = True
+        #pass
 
     pygame.init()
 
