@@ -81,7 +81,6 @@ def ivideo():
         os.system(f"mpv --geometry=30% '{arg}' &")
 
     menudict = {}
-    print(getoptions())
     for o in getoptions():
         label = o.split(os.path.sep)[-1]
         menudict[label] = (command, o)

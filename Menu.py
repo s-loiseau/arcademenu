@@ -62,7 +62,6 @@ class Menu:
         self.maxh = 1026
         if self.h > self.maxh:
             self.h = self.maxh
-        #pygame.display.set_mode((self.w, self.h), vsync=1)
 
         self.buttons[self.index].select()
 
@@ -92,7 +91,6 @@ class Menu:
 
             if self.index < len(self.buttons) - 1:
                 if checky >= screenh - 2 * self.intervalbutton:
-                    print(checky, self.index)
                     for b in self.buttons:
                         b.y -= self.intervalbutton
 
@@ -103,7 +101,6 @@ class Menu:
             #increment = 58
             increment = self.intervalbutton
             if checky < 0:
-                print(checky, self.index)
                 for b in self.buttons:
                     b.y += self.intervalbutton
 
@@ -128,10 +125,7 @@ class Menu:
                 label = self.buttons[self.index].label
                 action = self.menudict[label]
 
-                print(type(action), label)
-
                 if isinstance(action,tuple):
-                    print("ACTION", action)
                     action[0](action[1])
                     return None
                 elif callable(action):
@@ -149,3 +143,9 @@ class Menu:
 
             elif e.key == pygame.K_k:
                 self.previous()
+
+            elif e.key == pygame.K_SPACE:
+                self.next()
+                self.next()
+                self.next()
+                self.next()

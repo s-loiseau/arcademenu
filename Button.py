@@ -17,8 +17,6 @@ class Button:
         self.bgcolor = self.colors[1]
         self.bordercolor = self.colors[2]
         self.padding = padding
-        #print(dir(self.font))
-        #print(self.font.get_height())
         self.texth = self.font.get_height()
 
     def select(self):

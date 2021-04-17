@@ -2,7 +2,7 @@
 import pygame
 import os
 import sys
-from menus import *
+import menus as m
 
 
 if __name__ == "__main__":
@@ -22,25 +22,28 @@ if __name__ == "__main__":
 
     activescreen = 'mainmenu'
 
-    gamedict = {'mainmenu':mainmenu,
-                'powermenu':powermenu, 
-                'interactivemenu':interactivemenu,
-                'audiomenu':audiomenu,
-                'hdmimenu':hdmimenu,
-                'ivideo':ivideo
+    gamedict = {'mainmenu':m.mainmenu,
+                'powermenu':m.powermenu, 
+                'interactivemenu':m.interactivemenu,
+                'audiomenu':m.audiomenu,
+                'hdmimenu':m.hdmimenu,
+                'ivideo':m.ivideo
                }
 
 
     done = False
+
     ecran = gamedict[activescreen]()
 
     print("START",ecran.h, ecran.w)
-    pygame.display.set_mode((ecran.w, ecran.h), vsync=1)
-    surf = pygame.display.get_surface()
+
+    surf = pygame.display.set_mode((ecran.w, ecran.h), vsync=1)
+
+    #surf = pygame.display.get_surface()
 
     # LOOP
     while not done:
-        clock.tick(20)
+        clock.tick(30)
 
         #EVENTS
         for event in pygame.event.get():
@@ -51,7 +54,7 @@ if __name__ == "__main__":
                 if activescreen:
                     # slow down to avoid multiple actions too quickly.
                     pygame.time.wait(100)
-                    print(activescreen, "receive, should load it")
+                    print(activescreen, "CHANGE MENU")
                     ecran = gamedict[activescreen]()
 
             #DRAW
